@@ -13,7 +13,7 @@ export default async function Home(props: ISearchParams) {
   return (
     <main>
       <h1 className="main-page-title">
-        It's now {weatherData.current.condition.text.toLowerCase()} at{" "}
+        It&apos;s now {weatherData.current.condition.text.toLowerCase()} at{" "}
         {geo.city}
       </h1>
       <p>{propmtCityDescription}</p>

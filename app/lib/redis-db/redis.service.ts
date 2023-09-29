@@ -12,11 +12,12 @@ const redisClient = createClient({
 redisClient.on("error", (error) => {
   throw error;
 });
-redisClient.connect();
 
 export async function getCachedKey(key: string): Promise<any | null> {
   try {
+    await redisClient.connect();
     const data = await redisClient.get(key);
+    redisClient.quit();
     return data;
   } catch (error) {
     throw error;
@@ -25,7 +26,9 @@ export async function getCachedKey(key: string): Promise<any | null> {
 
 export async function setCachedData(key: string, value: any): Promise<void> {
   try {
+    await redisClient.connect();
     await redisClient.set(key, value);
+    redisClient.quit();
   } catch (error) {
     throw error;
   }

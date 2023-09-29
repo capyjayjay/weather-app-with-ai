@@ -1,4 +1,6 @@
+import Navigation from "./components/header/Navigation";
 import "./globals.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,9 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="max-w-6xl mx-auto">
-          <nav>123</nav>
-        </header>
+        <Navigation />
         <main className="max-w-6xl mx-auto">{children}</main>
       </body>
     </html>

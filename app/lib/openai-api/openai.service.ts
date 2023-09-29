@@ -15,7 +15,7 @@ async function generateDescription(geoQuery: string): Promise<string> {
       messages: [
         {
           role: "user",
-          content: `please write a 5 sentences of general description of ${geoQuery}`,
+          content: `please write a short general discriptive paragraph of ${geoQuery}`,
         },
       ],
     });

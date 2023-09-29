@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-.main-page-title {
-    @apply text-4xl font-bold text-gray-800;
+.page-title {
+    @apply text-4xl font-bold text-zinc-800;
+}
+
+.header-container {
+    @apply min-h-[30vh] md:min-h-[35vh] flex items-center justify-center;
+}
+
+main, article, section {
+    @apply px-2 md:px-0;
+}
+
+.paragraph {
+    @apply my-5 md:my-10 text-lg md:text-inherit;
+}
+
+ul, ol {
+    @apply px-5 md:px-0;
+}
+
+li {
+    @apply text-lg md:text-inherit;
+}
+
+.data-box {
+    @apply text-xl;
 }

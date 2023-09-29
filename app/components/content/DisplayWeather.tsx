@@ -4,7 +4,7 @@ import WeatherBox from "./WeatherBox";
 const DisplayWeather = ({ data }: IDisplayWeather) => {
   return (
     <section className="flex items-center flex-col justify-center pt-10">
-      <div className="grid grid-cols-3 grid-flow-row gap-6 w-full">
+      <div className="grid grid-cols-flow md:grid-cols-3 grid-flow-row gap-6 w-full">
         <WeatherBox
           label="Temperature"
           data={data.current.temp_c}

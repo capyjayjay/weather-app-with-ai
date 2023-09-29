@@ -1,4 +1,4 @@
-import { getNowWeatherByQuery } from "@/app/lib/weather.service";
+import { getNowWeatherByQuery } from "@/app/lib/weather-api/weather.service";
 
 async function handler(request: Request): Promise<any> {
   let query;

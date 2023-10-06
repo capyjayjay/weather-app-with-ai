@@ -1,7 +1,15 @@
+const REDIS_URI = process.env.REDIS_URI;
+const REDIS_PW = process.env.REDIS_PW;
+const REDIS_PORT = process.env.REDIS_PORT;
+
+if (!REDIS_URI || !REDIS_PW || !REDIS_PORT) {
+  throw new Error("REDIS_URI, REDIS_PW, REDIS_PORT must be defined");
+}
+
 const redisConfig = {
-  uri: process.env.REDIS_URI ?? "",
-  pw: process.env.REDIS_PW ?? "",
-  port: process.env.REDIS_PORT ? +process.env.REDIS_PORT : 0,
+  uri: REDIS_URI,
+  pw: REDIS_PW,
+  port: +REDIS_PORT,
 };
 
 export default redisConfig;

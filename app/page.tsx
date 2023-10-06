@@ -6,9 +6,15 @@ import DisplayWeather from "./components/content/DisplayWeather";
 
 export default async function Home(props: ISearchParams) {
   const geo = props.searchParams;
-  const weatherData = await getNowWeatherByQuery(
-    `${geo.country} ${geo.region} ${geo.city}`
-  );
+  let weatherData = null;
+
+  try {
+    weatherData = await getNowWeatherByQuery(
+      `${geo.country} ${geo.region} ${geo.city}`
+    );
+  } catch (error) {
+    console.log("🚀 ~ file: page.tsx:16 ~ Home ~ error:", error);
+  }
 
   return (
     <main>
@@ -17,7 +23,9 @@ export default async function Home(props: ISearchParams) {
           <h1 className="page-title text-center">
             It&apos;s now{" "}
             <span className={`border-b-4 border-b-blue-400`}>
-              {weatherData.current.condition.text.toLowerCase()}
+              {weatherData
+                ? weatherData.current.condition.text.toLowerCase()
+                : "N/A"}
             </span>{" "}
             at{" "}
             <span className="block md:inline my-2 md:my-0 text-5xl md:text-4xl">
@@ -28,7 +36,7 @@ export default async function Home(props: ISearchParams) {
         <Suspense fallback={<ParagraphLoadingSkeleton />}>
           <GenerativeDescription geo={geo} />
         </Suspense>
-        <DisplayWeather data={weatherData} />
+        {weatherData ? <DisplayWeather data={weatherData} /> : ""}
       </article>
     </main>
   );

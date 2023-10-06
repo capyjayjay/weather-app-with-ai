@@ -10,7 +10,8 @@ async function getNowWeatherByQuery(
         "/current.json?key=" +
         weatherConfig.api.key +
         "&q=" +
-        query
+        query,
+      { next: { revalidate: 1800 } }
     ).then((res) => res.json());
     return data;
   } catch (error) {
